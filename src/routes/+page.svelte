@@ -112,6 +112,13 @@
       };
       input.click();
     }
+
+    function clearData(){
+      systemPrompts = [""];
+      userPrompts = [""];
+      titles = [""];
+      result = "";
+    }
   
     const scrolltoSide = () => {
       const promptField = document.querySelector(".prompts_field");
@@ -136,9 +143,10 @@
   
   {#if isSetting}
   <div class="button_field">
-    <button class="port_button" on:click={openConfig} transition:fly="{{ y: -50, delay:300, duration: 500 }}">Config</button>
-    <button class="port_button" on:click={downloadJson} transition:fly="{{ y: -50, delay:400, duration: 500 }}">Export</button>
-    <button class="port_button" on:click={openDialog} transition:fly="{{ y: -50, delay:500, duration: 500 }}">Import</button>
+    <button class="port_button" on:click={openConfig} transition:fly="{{ y: -50, delay:200, duration: 500 }}">Config</button>
+    <button class="port_button" on:click={downloadJson} transition:fly="{{ y: -50, delay:300, duration: 500 }}">Export</button>
+    <button class="port_button" on:click={openDialog} transition:fly="{{ y: -50, delay:400, duration: 500 }}">Import</button>
+    <button class="port_button" on:click={clearData} transition:fly="{{ y: -50, delay:500, duration: 500 }}">Clear</button>
   </div>
   
   <div class="prompts_field" transition:fly="{{ x: -50, delay:200, duration: 500 }}">
