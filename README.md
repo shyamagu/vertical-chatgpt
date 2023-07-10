@@ -1,38 +1,25 @@
-# create-svelte
+# Horizontal ChatGPT
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This is a horizontal version of ChatGPT deployed on Azure StaticWebApps using Azure OpenAI Services. Unlike the traditional vertical ChatGPT, this version offers a different approach to conversational AI.
 
-## Creating a project
+## Usage
 
-If you're seeing this, you've probably already done this step. Congrats!
+Using Horizontal ChatGPT is simple. You only need to provide the following initial configurations:
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- Azure OpenAI Services endpoint
+- Azure OpenAI Services ChatGPT model name
+- Azure OpenAI Services API Key
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Deployment
 
-## Developing
+The Horizontal ChatGPT is deployed on Azure StaticWebApps and can be accessed using the following URL: [https://salmon-beach-093e71f00.3.azurestaticapps.net/](https://salmon-beach-093e71f00.3.azurestaticapps.net/).
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Functionality
 
-```bash
-npm run dev
+Horizontal ChatGPT leverages Azure OpenAI Services to process user inputs and generate responses. It is designed for advanced analysis and complex processing tasks. Unlike the raw OpenAI Service, this version offers enhanced capabilities.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## Data Privacy
 
-## Building
+Please note that no user input or key information is stored by this application. However, if you have concerns, you can either regenerate your keys regularly or clone this repository and deploy it on your own Azure StaticWebApps instance after reviewing the code.
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Feel free to explore and experiment with Horizontal ChatGPT!

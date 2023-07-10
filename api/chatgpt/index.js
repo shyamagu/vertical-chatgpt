@@ -26,11 +26,21 @@ module.exports = async function (context, req) {
       temperature: 0.0,
     });
 
+    //return response['choices'][0]['message']['content'],
+    //response['usage']['prompt_tokens'], 
+    //response['usage']['completion_tokens'], 
+    //response['usage']['total_tokens']
+
+
     const answer = chatCompletion.data.choices[0].message.content;
+    const input_token = chatCompletion.data.usage.prompt_tokens;
+    const output_token = chatCompletion.data.usage.completion_tokens;
+    const total_token = chatCompletion.data.usage.total_tokens;
+
 
     context.res = {
       status: 200 /* Defaults to 200 */,
-      body: { message: answer },
+      body: { message: answer,input_token:input_token,output_token:output_token,total_token:total_token },
       headers: {
         "Content-Type": "application/json",
       },

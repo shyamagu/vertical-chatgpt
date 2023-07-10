@@ -13,10 +13,10 @@
     export let apiKey = "";
   
     export let title = "";
+
     let editable = false;
   
     let loading = false;
-  
   
     let token = 0;
   
@@ -45,7 +45,7 @@
         const data = await response.json();
   
         const result = data.message;
-        token = data.input;
+        token = data.input_token;
   
         dispatch("result", result);
   
