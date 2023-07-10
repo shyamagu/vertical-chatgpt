@@ -22,24 +22,27 @@
 <div class="main">
   <div class="config_field">
     <h1 class="title">AOAI Settings</h1>
-    <div class="item_name">Endpoint</div>
+    <label for="Endpoint" class="item_name">Endpoint</label>
     <input
       type="text"
       class="input_field"
+      id="Endpoint"
       bind:value={config.endpoint}
       placeholder="Enter your endpoint here"
     />
-    <div class="item_name">Model Name</div>
+    <label for="Modelname" class="item_name">Model Name</label>
     <input
       type="text"
       class="input_field"
+      id="Modelname"
       bind:value={config.modelName}
       placeholder="Enter your model name here"
     />
-    <div class="item_name">API Key</div>
+    <label for="APIkey" class="item_name">API Key</label>
     <input
       type="text"
       class="input_field"
+      id="APIkey"
       bind:value={config.apiKey}
       placeholder="Enter your API key here"
     />
@@ -78,21 +81,33 @@
     font-size: 1.4em;
     font-weight: bold;
     margin-left:50px;
-    margin-top:30px;
-    margin-bottom: 10px;
   }
 
   .input_field{
     font-size: 1.2em;
     width:400px;
+    height:35px;
     margin-left:50px;
     font-family: 'Noto Sans JP', sans-serif;
     border: none;
     border-radius: 10px;
+    margin-bottom: 25px;
+    margin-top:10px;
+    padding-left:10px;
+  }
+
+  .input_field::placeholder {
+    font-size: 0.9em;
+    color: #aaa;
+  }
+
+  .input_field:focus {
+    outline: none;
+    
   }
 
   .button_field {
-    margin-top:50px;
+    margin-top:15px;
     width:100%;
     text-align: right;
   }
@@ -100,7 +115,7 @@
   .submit_button {
     font-size: 1.5em;
     padding: 10 20px;
-    margin-right:50px;
+    margin-right:35px;
     width: 150px;
     height: 50px;
     background-color: #66c;
