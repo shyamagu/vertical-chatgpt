@@ -22,11 +22,13 @@
 <div class="main">
   <div class="config_field">
     <h1 class="title">AOAI Settings</h1>
+    <form>
     <label for="Endpoint" class="item_name">Endpoint</label>
     <input
       type="text"
       class="input_field"
       id="Endpoint"
+      name="Endpoint"
       bind:value={config.endpoint}
       placeholder="Enter your endpoint here"
     />
@@ -35,6 +37,7 @@
       type="text"
       class="input_field"
       id="Modelname"
+      name="Modelname"
       bind:value={config.modelName}
       placeholder="Enter your model name here"
     />
@@ -43,9 +46,11 @@
       type="text"
       class="input_field"
       id="APIkey"
+      name="APIkey"
       bind:value={config.apiKey}
       placeholder="Enter your API key here"
     />
+    </form>
     <div class="button_field">
       <button class="submit_button" on:click={setConfig}>Done</button>
     </div>
