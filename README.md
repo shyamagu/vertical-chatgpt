@@ -18,6 +18,21 @@ The Horizontal ChatGPT is deployed on Azure StaticWebApps and can be accessed us
 
 Horizontal ChatGPT leverages Azure OpenAI Services to process user inputs and generate responses. It is designed for advanced analysis and complex processing tasks. Unlike the raw OpenAI Service, this version offers enhanced capabilities.
 
+## Instructions
+
+Here are the instructions for use:
+
+1. Enter the system prompt and user prompt.
+2. Click the triangle button to display the response to the next set of user prompts.
+3. You can edit the text or add new user prompts as needed.
+4. Click the Export button to export the current situation.
+5. Click the Import button to import a previously exported situation.
+6. You can display a title above each set.
+7. Each set can be deleted individually.
+
+Please use according to your preference.
+![instructions.png](horizontal_chatgpt.png)
+
 ## Data Privacy
 
 Please note that no user input or key information is stored by this application. However, if you have concerns, you can either regenerate your keys regularly or clone this repository and deploy it on your own Azure StaticWebApps instance after reviewing the code.
