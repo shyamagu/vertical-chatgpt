@@ -43,7 +43,7 @@
     />
     <label for="APIkey" class="item_name">API Key</label>
     <input
-      type="text"
+      type="password"
       class="input_field"
       id="APIkey"
       name="APIkey"
