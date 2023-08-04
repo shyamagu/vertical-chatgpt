@@ -14,6 +14,10 @@
 
   export let title = "";
 
+  let timeout = 300;
+
+  let error = "";
+
   let editable = false;
 
   let loading = false;
@@ -22,6 +26,7 @@
 
   export async function callChatGPT() {
     loading = true;
+    error = "";
 
     if (systemPrompt) {
       const chats = [
@@ -34,6 +39,7 @@
         endpoint: endpoint,
         modelName: modelName,
         apiKey: apiKey,
+        timeout:timeout,
       };
 
       try {
@@ -45,12 +51,21 @@
           body: JSON.stringify(sendData),
         });
 
+        //HTTPコードを取得する
+        const status = response.status;
+
         const data = await response.json();
 
-        const result = data.message;
-        token = data.input_token;
+        if(status ==200){
+          const result = data.message;
+          token = data.input_token;
+          dispatch("result", result);
+        }else if(status == 500){
+          error = data.message
+        }else{
+          throw new Error();
+        }
 
-        dispatch("result", result);
       } catch (error) {
         dispatch("result", "Something went wrong during the ChatGPT request.");
       }
@@ -99,12 +114,29 @@
       bind:value={userPrompt}
       placeholder="Enter your user prompt here"
     />
-    <div class="token_display">
-      {#if token > 0}
-        {token}
-      {:else}
-        NaN
-      {/if}
+    <div class="footer_field">
+      <div class="timeout_field">
+        Timeout:
+        <input
+          type="number"
+          id="timeout"
+          name="timeout"
+          class="timeout_input"
+          class:active={ended}
+          readonly={!ended}
+          min="0"
+          max="300"
+          bind:value={timeout}
+        />
+        (Sec)
+      </div>
+      <div class="token_display">
+        {#if token > 0}
+          {token}
+        {:else}
+          NaN
+        {/if}
+      </div>
     </div>
   </div>
 
@@ -118,6 +150,9 @@
         <div class="submit_button" on:click={callChatGPT} />
       {:else}
         <div class="submit_button_disable" />
+      {/if}
+      {#if error}
+        <div class="error">{error}</div>
       {/if}
     </div>
   {/if}
@@ -148,8 +183,23 @@
     width: 400px;
   }
 
-  .token_display {
+  .footer_field {
+    display: flex;
     width: 100%;
+  }
+
+  .timeout_field {
+    width: 50%;
+    font-size:0.8em
+  }
+
+  .timeout_input {
+    text-align: right;
+    background-color: #eee;
+    border: 1px solid #ccc;
+  }
+  .token_display {
+    width: 50%;
     font-size: 1em;
     color: #444;
     text-align: right;
@@ -159,6 +209,7 @@
 
   .button_field {
     margin-left: 20px;
+    width:50px;
   }
 
   .submit_button {
@@ -230,5 +281,11 @@
     to {
       transform: rotate(360deg);
     }
+  }
+
+  .error {
+    color: red;
+    font-size: 0.8em;
+    font-weight: bold;
   }
 </style>

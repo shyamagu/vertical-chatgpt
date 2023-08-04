@@ -6,6 +6,7 @@ module.exports = async function (context, req) {
     const modelName = req.body.modelName;
     const apiKey = req.body.apiKey;
     const chats = req.body.chats;
+    const timeout = req.body.timeout;
 
     this.openAiApi = new OpenAIApi(
       new Configuration({
@@ -24,7 +25,7 @@ module.exports = async function (context, req) {
       //    model: "gpt-3.5-turbo",
       messages: chats,
       temperature: 0.0,
-    });
+    },{timeout: timeout*1000});
 
     //return response['choices'][0]['message']['content'],
     //response['usage']['prompt_tokens'], 
